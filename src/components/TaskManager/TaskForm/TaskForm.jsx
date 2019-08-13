@@ -66,7 +66,7 @@ class TaskForm extends Component {
 
     return (
         <Fragment>
-        <Alert id="err" color="danger">{error}</Alert>
+        {error === '' ? '':<Alert id="err" color="danger">{error}</Alert> }
         <Form onSubmit={this.handleSubmit}>
             <FormGroup>
                 <Label for="title">Title</Label>
