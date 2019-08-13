@@ -14,6 +14,7 @@ class TaskForm extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.reset = this.reset.bind(this)
     }
 
     handleSubmit (e) {
@@ -21,13 +22,27 @@ class TaskForm extends Component {
         console.log(this)
 
         if (this.state.title === '' || this.state.description === '') {
-            document.getElementById('err').innerText = 'Form is invalid!'
+            this.setState({
+                error: 'Form is Invalid'
+            })
+            
         } else {
-            console.log(this.state)
-            document.getElementById('err').innerText = '' 
+            const data = {
+                title: this.state.title,
+                description: this.state.description
+            }
+            console.log(data) //TODO Make an api call here
+            this.reset()
         }
-
         console.log("Your data is getting submitted.")
+    }
+
+    reset(){
+        this.setState({
+                error: '',
+                title: '',
+                description: ''
+            })
     }
 
     handleChange (e){
@@ -46,9 +61,11 @@ class TaskForm extends Component {
     }
 
     render() {
+    
+    const {error} = this.state
     return (
         <Fragment>
-        <Alert id="err" color="danger"></Alert>
+        <Alert id="err" color="danger">{error}</Alert>
         <Form onSubmit={this.handleSubmit}>
             <FormGroup>
                 <Label for="title">Title</Label>
