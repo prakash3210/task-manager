@@ -37,7 +37,7 @@ class TaskForm extends Component {
         console.log("Your data is getting submitted.")
     }
 
-    reset(){
+    reset(){ //Resetting the form
         this.setState({
                 error: '',
                 title: '',
