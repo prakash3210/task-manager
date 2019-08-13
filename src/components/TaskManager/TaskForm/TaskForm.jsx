@@ -62,19 +62,20 @@ class TaskForm extends Component {
 
     render() {
     
-    const {error} = this.state
+    const {error, title, description} = this.state
+
     return (
         <Fragment>
         <Alert id="err" color="danger">{error}</Alert>
         <Form onSubmit={this.handleSubmit}>
             <FormGroup>
                 <Label for="title">Title</Label>
-                <Input id="title" onChange={this.handleChange}/>
+                <Input id="title" value={title} onChange={this.handleChange}/>
             </FormGroup>
 
             <FormGroup>
                 <Label for="description">Description</Label>
-                <Input type="textarea" id="description" rows="5" cols="30" onChange={this.handleChange}/>
+                <Input type="textarea" value={description} id="description" rows="5" cols="30" onChange={this.handleChange}/>
             </FormGroup>
             
             <Button color="primary" size="sm">Add</Button>
